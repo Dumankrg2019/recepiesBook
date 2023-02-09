@@ -7,6 +7,10 @@ plugins {
     id 'com.google.dagger.hilt.android' version '2.44' apply false
 
 }
+ext {
+    roomDBVersion = '2.5.0'
+    retrofitVersion = '2.9.0'
+}
 
 task clean(type: Delete) {
     delete rootProject.buildDir

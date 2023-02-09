@@ -40,6 +40,10 @@ android {
             }
         }
     }
+    buildFeatures {
+        //dataBinding true
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -48,6 +52,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.0'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -63,10 +68,10 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
 
     // Room components
-    implementation "androidx.room:room-runtime:2.5.0"
-    kapt "androidx.room:room-compiler:2.5.0"
-    implementation "androidx.room:room-ktx:2.5.0"
-    androidTestImplementation "androidx.room:room-testing:2.5.0"
+    implementation "androidx.room:room-runtime:$rootProject.roomDBVersion"
+    kapt "androidx.room:room-compiler:$rootProject.roomDBVersion"
+    implementation "androidx.room:room-ktx:$rootProject.roomDBVersion"
+    androidTestImplementation "androidx.room:room-testing:$rootProject.roomDBVersion"
 
     // Data binding
     kapt "com.android.databinding:compiler:3.2.0-alpha10"
@@ -79,8 +84,8 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
     // Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
 
     //Dagger - Hilt
     implementation "com.google.dagger:hilt-android:2.44"
@@ -107,7 +112,7 @@ dependencies {
 
     // Shimmer
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
-    implementation 'com.todkars:shimmer-recyclerview:0.4.0'
+    //implementation 'com.todkars:shimmer-recyclerview:0.4.1'
 
     // Jsoup
     implementation 'org.jsoup:jsoup:1.13.1'

@@ -2,14 +2,28 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         google()
+        mavenCentral(){
+            content {
+                includeModule("com.todkars", "shimmer-recyclerview")
+                includeModule("com.facebook.shimmer", "shimmer")
+            }
+        }
         mavenCentral()
+        maven { url "https://jitpack.io" }
     }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
+        mavenCentral(){
+            content {
+                includeModule("com.todkars", "shimmer-recyclerview")
+                includeModule("com.facebook.shimmer", "shimmer")
+            }
+        }
         mavenCentral()
+        maven { url "https://jitpack.io" }
     }
 }
 rootProject.name = "RecepiesBook"
