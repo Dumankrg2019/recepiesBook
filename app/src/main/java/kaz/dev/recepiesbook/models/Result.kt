@@ -1,4 +1,4 @@
-package kaz.dev.recepiesbook
+package kaz.dev.recepiesbook.models
 
 data class Result(
     val id: Int?,

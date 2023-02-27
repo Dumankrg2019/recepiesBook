@@ -1,4 +1,4 @@
-package kaz.dev.recepiesbook
+package kaz.dev.recepiesbook.ui.fragments.recipes
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
