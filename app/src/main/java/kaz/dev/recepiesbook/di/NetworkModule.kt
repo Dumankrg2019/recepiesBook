@@ -5,7 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.internal.managers.ApplicationComponentManager
 import kaz.dev.recepiesbook.Constance
-import kaz.dev.recepiesbook.FoodRecipesApi
+import kaz.dev.data.network.FoodRecipesApi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
