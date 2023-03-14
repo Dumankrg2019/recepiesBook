@@ -1,4 +1,4 @@
-package kaz.dev.util
+package kaz.dev.recepiesbook.util
 
 sealed class NetworkResult<T>(
     val data: T? = null,

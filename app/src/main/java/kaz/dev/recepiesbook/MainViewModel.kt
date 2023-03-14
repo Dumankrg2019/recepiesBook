@@ -1,6 +1,5 @@
-package kaz.dev
+package kaz.dev.recepiesbook
 
-import android.accounts.NetworkErrorException
 import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
@@ -13,7 +12,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kaz.dev.data.Repository
 import kaz.dev.recepiesbook.models.FoodRecipe
-import kaz.dev.util.NetworkResult
+import kaz.dev.recepiesbook.util.NetworkResult
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.lang.Exception
