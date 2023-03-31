@@ -53,7 +53,7 @@
                     android:textSize="20sp"
                     android:ellipsize="end"
                     android:maxLines="2"
-                    android:text="TextView"
+                    android:text="@{result.title}"
                     android:textColor="@color/darker"
                     android:textStyle="bold"
                     app:fontFamily="@font/courgette"

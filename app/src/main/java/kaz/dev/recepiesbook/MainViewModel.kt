@@ -11,7 +11,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kaz.dev.data.Repository
-import kaz.dev.recepiesbook.models.FoodRecipe
 import kaz.dev.recepiesbook.util.NetworkResult
 import kotlinx.coroutines.launch
 import retrofit2.Response

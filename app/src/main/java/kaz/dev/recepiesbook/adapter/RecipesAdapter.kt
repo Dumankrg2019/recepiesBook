@@ -5,8 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import kaz.dev.recepiesbook.databinding.ItemRowRecipesBinding
-import kaz.dev.recepiesbook.models.FoodRecipe
-import kaz.dev.recepiesbook.models.Result
 import kaz.dev.recepiesbook.util.RecipesDiffUtil
 
 class RecipesAdapter: RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
