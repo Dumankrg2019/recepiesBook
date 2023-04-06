@@ -11,6 +11,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kaz.dev.data.Repository
+import kaz.dev.recepiesbook.models.FoodRecipes
 import kaz.dev.recepiesbook.util.NetworkResult
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -21,7 +22,7 @@ class MainViewModel @ViewModelInject constructor(
     application: Application)
     : AndroidViewModel(application) {
 
-    var recipesResponse: MutableLiveData<NetworkResult<FoodRecipe>> = MutableLiveData()
+    var recipesResponse: MutableLiveData<NetworkResult<FoodRecipes>> = MutableLiveData()
 
     @RequiresApi(Build.VERSION_CODES.M)
     fun getRecipes(queries: Map<String, String>) = viewModelScope.launch {
@@ -43,7 +44,7 @@ class MainViewModel @ViewModelInject constructor(
         }
     }
 
-    private fun handleFoodRecipesResponse(response: Response<FoodRecipe>): NetworkResult<FoodRecipe>? {
+    private fun handleFoodRecipesResponse(response: Response<FoodRecipes>): NetworkResult<FoodRecipes>? {
 
         when {
             response.message().toString().contains("timeout") -> {

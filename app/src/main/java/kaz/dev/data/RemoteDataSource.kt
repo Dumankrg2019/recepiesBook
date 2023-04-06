@@ -1,6 +1,7 @@
 package kaz.dev.data
 
 import kaz.dev.data.network.FoodRecipesApi
+import kaz.dev.recepiesbook.models.FoodRecipes
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -9,7 +10,7 @@ class RemoteDataSource @Inject constructor(
 ) {
 
    suspend fun getRecipes(queries: Map<String, String>)
-    : Response<FoodRecipe> {
+    : Response<FoodRecipes> {
         return foodRecipesApi.getRecipes(queries)
     }
 }

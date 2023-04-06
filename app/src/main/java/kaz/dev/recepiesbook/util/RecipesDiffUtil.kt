@@ -1,6 +1,7 @@
 package kaz.dev.recepiesbook.util
 
 import androidx.recyclerview.widget.DiffUtil
+import kaz.dev.recepiesbook.models.Result
 
 class RecipesDiffUtil(
     private val oldList: List<Result>,

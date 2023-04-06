@@ -3,7 +3,6 @@ package kaz.dev.recepiesbook.di
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.internal.managers.ApplicationComponentManager
 import kaz.dev.recepiesbook.Constance
 import kaz.dev.data.network.FoodRecipesApi
 import okhttp3.OkHttpClient
@@ -11,9 +10,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
+import dagger.hilt.android.components.ApplicationComponent
 
 @Module
-@InstallIn(ApplicationComponentManager::class)
+@InstallIn(ApplicationComponent::class)
 
 object NetworkModule {
 

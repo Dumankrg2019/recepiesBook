@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import kaz.dev.recepiesbook.databinding.ItemRowRecipesBinding
+import kaz.dev.recepiesbook.models.FoodRecipes
+import kaz.dev.recepiesbook.models.Result
 import kaz.dev.recepiesbook.util.RecipesDiffUtil
 
 class RecipesAdapter: RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
@@ -43,10 +45,10 @@ class RecipesAdapter: RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
         return recipes.size
     }
 
-    fun setData(newData: FoodRecipe) {
-        val recipesDiffUtil = RecipesDiffUtil(recipes, newData.results)
-        val diffUtilResult = DiffUtil.calculateDiff(recipesDiffUtil)
-        recipes = newData.results
-        diffUtilResult.dispatchUpdatesTo(this)
+    fun setData(newData: FoodRecipes) {
+        val recipesDiffUtil = newData.results?.let { RecipesDiffUtil(recipes, it as List<Result>) }
+        val diffUtilResult = recipesDiffUtil?.let { DiffUtil.calculateDiff(it) }
+        recipes = newData.results as List<Result>
+        diffUtilResult?.dispatchUpdatesTo(this)
     }
 }
