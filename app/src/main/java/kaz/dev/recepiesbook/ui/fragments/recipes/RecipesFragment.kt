@@ -12,18 +12,27 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kaz.dev.recepiesbook.Constance.Companion.API_KEY
-import kaz.dev.recepiesbook.MainViewModel
+import kaz.dev.recepiesbook.viewmodels.MainViewModel
 import kaz.dev.recepiesbook.R
 import kaz.dev.recepiesbook.adapter.RecipesAdapter
 import kaz.dev.recepiesbook.util.NetworkResult
+import kaz.dev.recepiesbook.viewmodels.RecipesViewModel
 import kotlinx.android.synthetic.main.fragment_recipes.view.*
 
 @AndroidEntryPoint
 class RecipesFragment : Fragment() {
 
     private lateinit var mainViewModel: MainViewModel
+    private lateinit var recipesViewModel: RecipesViewModel
     private val mAdapter by lazy { RecipesAdapter() }
     private lateinit var mView: View
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+        recipesViewModel = ViewModelProvider(requireActivity()).get(RecipesViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +48,7 @@ class RecipesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+
 
         setUpRecyclerView()
 
@@ -57,7 +66,7 @@ class RecipesFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.M)
     private fun requestApiData() {
-        mainViewModel.getRecipes(applyQueries())
+        mainViewModel.getRecipes(recipesViewModel.applyQueries())
         mainViewModel.recipesResponse.observe(viewLifecycleOwner, {response->
             when(response) {
                 is NetworkResult.Success -> {
@@ -77,18 +86,6 @@ class RecipesFragment : Fragment() {
                 }
             }
         })
-    }
-
-    private fun applyQueries(): HashMap<String, String> {
-        val queries: HashMap<String, String> = HashMap()
-        queries["number"] = "50"
-        queries["apiKey"] = API_KEY
-        queries["type"] = "snack"
-        queries["diet"] = "vegan"
-        queries["addRecipeInformation"] = "true"
-        queries["fillIngredients"] = "true"
-
-        return queries
     }
 
     private fun hideShimmerEffect() {

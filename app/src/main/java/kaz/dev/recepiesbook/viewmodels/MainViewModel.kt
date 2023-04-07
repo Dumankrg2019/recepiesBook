@@ -1,4 +1,4 @@
-package kaz.dev.recepiesbook
+package kaz.dev.recepiesbook.viewmodels
 
 import android.app.Application
 import android.content.Context
