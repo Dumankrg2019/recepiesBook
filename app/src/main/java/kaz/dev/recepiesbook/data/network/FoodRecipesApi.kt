@@ -1,4 +1,4 @@
-package kaz.dev.data.network
+package kaz.dev.recepiesbook.data.network
 
 import kaz.dev.recepiesbook.models.FoodRecipes
 import retrofit2.Response

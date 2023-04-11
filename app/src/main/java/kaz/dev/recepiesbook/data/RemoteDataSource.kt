@@ -1,6 +1,6 @@
-package kaz.dev.data
+package kaz.dev.recepiesbook.data
 
-import kaz.dev.data.network.FoodRecipesApi
+import kaz.dev.recepiesbook.data.network.FoodRecipesApi
 import kaz.dev.recepiesbook.models.FoodRecipes
 import retrofit2.Response
 import javax.inject.Inject
