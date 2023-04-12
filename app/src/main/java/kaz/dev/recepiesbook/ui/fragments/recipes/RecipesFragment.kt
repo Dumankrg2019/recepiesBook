@@ -17,6 +17,7 @@ import kaz.dev.recepiesbook.Constance.Companion.API_KEY
 import kaz.dev.recepiesbook.viewmodels.MainViewModel
 import kaz.dev.recepiesbook.R
 import kaz.dev.recepiesbook.adapter.RecipesAdapter
+import kaz.dev.recepiesbook.databinding.FragmentRecipesBinding
 import kaz.dev.recepiesbook.util.NetworkResult
 import kaz.dev.recepiesbook.util.observeOnce
 import kaz.dev.recepiesbook.viewmodels.RecipesViewModel
@@ -26,10 +27,14 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class RecipesFragment : Fragment() {
 
+    private var _binding: FragmentRecipesBinding? = null
+    private val  binding get() = _binding!!
+
+
     private lateinit var mainViewModel: MainViewModel
     private lateinit var recipesViewModel: RecipesViewModel
     private val mAdapter by lazy { RecipesAdapter() }
-    private lateinit var mView: View
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,8 +49,10 @@ class RecipesFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        mView = inflater.inflate(R.layout.fragment_recipes, container, false)
-        return mView
+        _binding = FragmentRecipesBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
+        binding.mainViewModel = mainViewModel
+        return binding.root
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -60,8 +67,8 @@ class RecipesFragment : Fragment() {
     }
 
     private fun setUpRecyclerView() {
-        mView.rvRecipes.adapter = mAdapter
-        mView.rvRecipes.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvRecipes.adapter = mAdapter
+        binding.rvRecipes.layoutManager = LinearLayoutManager(requireContext())
         showShimmerEffect()
     }
 
@@ -82,7 +89,8 @@ class RecipesFragment : Fragment() {
 
 
     private fun showShimmerEffect() {
-        mView.shimmerFrameLayout.startShimmer()
+        binding.shimmerFrameLayout.visibility = View.VISIBLE
+        binding.shimmerFrameLayout.startShimmer()
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -120,12 +128,14 @@ class RecipesFragment : Fragment() {
            })
        }
     }
+
     private fun hideShimmerEffect() {
-        mView.shimmerFrameLayout.hideShimmer()
+        binding.shimmerFrameLayout.hideShimmer()
+        binding.shimmerFrameLayout.visibility = View.INVISIBLE
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-
+        _binding = null
     }
 }
